@@ -1,0 +1,17 @@
+{
+  "name": "hmls-template",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "hapi-acl-auth": "^0.2.3",
+    "hapi-form-authentication": "0.0.5",
+    "hmls": "^1.1.8",
+    "lasso": "^2.11.14"
+  }
+}
