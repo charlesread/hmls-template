@@ -32,6 +32,14 @@ const plugins = [
 
 !async function () {
   await vc.init()
+
+  // vc.server.ext('onPostAuth', function (request, reply) {
+  //   console.log('onPostAuth')
+  //   console.log(request.path)
+  //   console.log(request.auth.credentials)
+  //   reply.continue()
+  // })
+
   vc.server.register(plugins, function (err) {
     if (err) {
       throw err

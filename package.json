@@ -13,5 +13,8 @@
     "hapi-form-authentication": "0.0.5",
     "hmls": "^1.1.8",
     "lasso": "^2.11.14"
+  },
+  "devDependencies": {
+    "browser-refresh-taglib": "^1.1.0"
   }
 }
