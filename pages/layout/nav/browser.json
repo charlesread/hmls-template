@@ -1,0 +1,6 @@
+{
+  "dependencies": [
+    "./lib.js",
+    "./style.css"
+  ]
+}

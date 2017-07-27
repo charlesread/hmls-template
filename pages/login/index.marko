@@ -1,0 +1,29 @@
+<lasso-page package-path="./browser.json"/>
+<include("../layout/template/index.marko", input)>
+<@main>
+<div class="card">
+    <h3 class="card-header">Please Log In</h3>
+    <div class="card-block">
+        <form method="post" action="${input.postPath}">
+            <div class="form-group">
+                <input type="text" name="username" id="username" placeholder="username" class="form-control">
+            </div>
+            <div class="form-group">
+                <input type="password" name="password" placeholder="password" class="form-control">
+            </div>
+            <div class="form-group">
+                <input type="submit" class="btn btn-primary">
+            </div>
+        </form>
+    </div>
+</div>
+<if (input.success === false)>
+<div class="alert alert-danger" role="alert">
+    <strong>Oh snap!</strong>
+    <p>
+        Looks like those credentials were a no-go.
+    </p>
+</div>
+</if>
+</@main>
+</include>
