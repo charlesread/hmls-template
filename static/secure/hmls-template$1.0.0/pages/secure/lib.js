@@ -3,6 +3,7 @@ $(document).ready(function () {
     $('#users').append(`<div>${data.credentials.username} joined</div>`);
   });
   socket.on('leave', function (data) {
+    console.log(data);
     $('#users').append(`<div>${data.credentials.username} left</div>`);
   });
   var elements = $('#credentialsDiv input');

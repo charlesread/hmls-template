@@ -10,7 +10,7 @@ const plugins = [
     options: {
       handler: function (username, password, callback) {
         const isValid = password === 'password'
-        callback(isValid, {username: username, firstName: username.toUpperCase(), roles: ['SUPERUSER']})
+        callback(isValid, {username: username, firstName: username.toUpperCase(), roles: ['ADMIN', 'SUPERUSER']})
       },
       loginPageFunction: function (input) {
         const page = require('~/pages/login/index.marko')

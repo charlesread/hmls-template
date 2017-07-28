@@ -1,20 +1,31 @@
 'use strict'
 
 const url = require('url')
+const db = require('~/lib/db')
+const users = db.users
 
 module.exports = function(io) {
   io.on('connection', (socket) => {
-    const id = socket.id
+    const socketId = socket.id
     let credentials = {}
     const room = url.parse(socket.handshake.headers.referer).path
-    console.log('socket %s connected to %s', id, room)
+    console.log('socket %s connected to %s (credentials: %j)', socketId, room, credentials)
     socket.join(room)
-    socket.on('disconnect', () => {
-      console.log('socket %s disconnected from %s (%s)', id, room, credentials.username)
+    // console.log('rooms:')
+    // console.log(io.sockets.adapter.rooms)
+    socket.on('credentials', function (credentials) {
+      console.log('socket %s sent credentials: %j', socketId, credentials)
+      const user = users.insert({socketId, credentials})
+      io.to(room).emit('join', user)
     })
-    socket.on('credentials', function (data) {
-      credentials = data
-      console.log('socket %s sent credentials: %j', id, credentials)
+    socket.on('disconnect', () => {
+      console.log('socket %s disconnected from %s (credentials: %j)', socketId, room, credentials)
+      const user = users.find({socketId})[0]
+      if (user  ) {
+        console.log('removing %j from db', user.credentials)
+        users.remove(user)
+        io.to(room).emit('leave', user)
+      }
     })
   })
 }

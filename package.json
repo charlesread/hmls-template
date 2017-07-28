@@ -12,7 +12,8 @@
     "hapi-acl-auth": "^0.2.3",
     "hapi-form-authentication": "0.0.5",
     "hmls": "^1.1.8",
-    "lasso": "^2.11.14"
+    "lasso": "^2.11.14",
+    "lokijs": "^1.5.0"
   },
   "devDependencies": {
     "browser-refresh-taglib": "^1.1.0"
