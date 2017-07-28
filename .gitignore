@@ -3,3 +3,5 @@ node_modules
 .idea
 static/*.js
 static/*.css
+static/**
+!static/.gitkeep
