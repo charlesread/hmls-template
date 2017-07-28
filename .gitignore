@@ -1,7 +1,5 @@
 node_modules
 .cache
 .idea
-static/*.js
-static/*.css
 static/**
 !static/.gitkeep
