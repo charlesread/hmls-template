@@ -1,0 +1,9 @@
+<div class="form-group ${input.id}">
+    <label class="form-control-label" for="${input.id}">${input.label}</label>
+    <input type="${input.type || 'text'}" class="form-control" id="${input.id}" name="${input.id}" aria-describedby="${input.id}Help"
+           placeholder="${input.placeholder}" autocomplete="off" required>
+    <!--<div class="form-control-feedback ${input.id}"></div>-->
+    <if(input.help)>
+        <small id="${input.id}Help" class="form-text text-muted">$!{input.help}</small>
+    </if>
+</div>

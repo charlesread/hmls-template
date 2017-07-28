@@ -9,11 +9,16 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "bcrypt": "^1.0.2",
+    "boom": "^5.2.0",
     "hapi-acl-auth": "^0.2.3",
     "hapi-form-authentication": "0.0.5",
     "hmls": "^1.1.8",
+    "ip": "^1.1.5",
     "lasso": "^2.11.14",
-    "lokijs": "^1.5.0"
+    "lokijs": "^1.5.0",
+    "mysql": "^2.14.0",
+    "request": "^2.81.0"
   },
   "devDependencies": {
     "browser-refresh-taglib": "^1.1.0"

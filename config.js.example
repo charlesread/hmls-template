@@ -1,0 +1,22 @@
+'use strict'
+
+const os = require('os')
+const ip = require('ip')
+
+const config = {}
+
+config.hmls = {
+  server: {
+    host: os.hostname(),
+    port: 8000
+  }
+}
+
+config.mysql = {
+  host: 'localhost',
+  user: '',
+  password: '',
+  database: ''
+}
+
+module.exports = config

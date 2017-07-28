@@ -2,15 +2,32 @@
 
 const HMLS = require('hmls')
 
-const vc = new HMLS()
+const api = require('~/lib/api')
+const config = require('~/config')
+
+const vc = new HMLS(config.hmls)
 
 const plugins = [
   {
     register: require('hapi-form-authentication'),
     options: {
       handler: function (username, password, callback) {
-        const isValid = password === 'password'
-        callback(isValid, {username: username, firstName: username.toUpperCase(), roles: ['ADMIN', 'SUPERUSER']})
+        (async function () {
+          let user = {}
+          const validateResults = await api.post('/user/validate', {username, password})
+          const valid = validateResults.valid
+          if (valid) {
+            const userResults = await api.get('/user/by/username/' + username)
+            user = userResults.user
+            const rolesResults = await api.get('/user-role/by/username/' + username)
+            user.roles = rolesResults.roles
+          }
+          callback(valid, user)
+        })()
+          .catch((err) => {
+            console.error(err.message)
+            callback(false)
+          })
       },
       loginPageFunction: function (input) {
         const page = require('~/pages/login/index.marko')
@@ -32,14 +49,6 @@ const plugins = [
 
 !async function () {
   await vc.init()
-
-  // vc.server.ext('onPostAuth', function (request, reply) {
-  //   console.log('onPostAuth')
-  //   console.log(request.path)
-  //   console.log(request.auth.credentials)
-  //   reply.continue()
-  // })
-
   vc.server.register(plugins, function (err) {
     if (err) {
       throw err

@@ -1,0 +1,7 @@
+label {
+    transition: color 1s;
+}
+
+input {
+    transition: border-color 1s;
+}

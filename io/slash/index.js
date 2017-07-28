@@ -1,7 +1,7 @@
 'use strict'
 
 const url = require('url')
-const db = require('~/lib/db')
+const db = require('~/lib/loki')
 const users = db.users
 
 module.exports = function(io) {

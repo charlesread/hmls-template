@@ -1,0 +1,21 @@
+<lasso-page package-path="./browser.json"/>
+<include("../layout/template/index.marko", input)>
+<@main>
+<h1>
+    /register
+</h1>
+
+<div class="container">
+    <form>
+        <field-input id="username" label="Username" placeholder="Enter a username" help="You know, like <code>kalelover82</code> or something"/>
+        <field-input id="firstName" label="First Name" placeholder="Enter your first name"/>
+        <field-input id="lastName" label="Last Name" placeholder="Enter your last name"/>
+        <field-input id="email" label="Email address" placeholder="Enter your email address" help="We'll never share your email with anyone else" type="email"/>
+        <field-input id="password" label="Password" placeholder="Enter a password" type="password"/>
+        <field-input id="password_confirmation" label="Password Confirmation" placeholder="Confirm your password" type="password"/>
+    </form>
+    <button id="submit" class="btn btn-primary">Submit</button>
+</div>
+
+</@main>
+</include>
